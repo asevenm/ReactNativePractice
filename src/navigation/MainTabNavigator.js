@@ -1,6 +1,6 @@
 import React from 'react';
-import { Platform } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from '../screens/HomeScreen';
 import UserScreen from '../screens/UserScreen';
 import MessageScreen from '../screens/MessageScreen';
@@ -11,6 +11,7 @@ const HomeStack = createStackNavigator({
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
+  tabBarIcon: <Icon name="home" size={30} />
 };
 
 const UserStack = createStackNavigator({
@@ -19,6 +20,7 @@ const UserStack = createStackNavigator({
 
 UserStack.navigationOptions = {
   tabBarLabel: 'User',
+  tabBarIcon: <Icon name="user" size={30} />
 };
 
 const MessageStack = createStackNavigator({
@@ -27,6 +29,7 @@ const MessageStack = createStackNavigator({
 
 MessageStack.navigationOptions = {
   tabBarLabel: 'Message',
+  tabBarIcon: <Icon name="message" size={30} />
 }
 
 export default createBottomTabNavigator({

@@ -6,7 +6,8 @@ import {
   Text,
   View,
   StyleSheet,
-  ListView
+  ListView,
+  Button,
 }  from 'react-native';
 import { fetchLanguageList } from '../redux/actions/HomeActions';
 
@@ -26,7 +27,8 @@ class HomeScreen extends React.Component {
   }
 
   render() {
-    const { time, languageList } = this.props;
+    console.log(this.props);
+    const { time, languageList, navigation } = this.props;
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -41,6 +43,10 @@ class HomeScreen extends React.Component {
               <Text key={item.id}>{item.name}</Text>
             ))
           }
+          <Button 
+            onPress={() => navigation.navigate('Profile')} 
+            title="Go to profile screen"
+          />
         </ScrollView>
       </View>
     )

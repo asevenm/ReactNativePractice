@@ -10,6 +10,7 @@ export default class MessageScreen extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <View>
         <Text>It is Message screen.</Text>
