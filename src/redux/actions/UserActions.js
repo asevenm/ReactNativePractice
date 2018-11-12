@@ -10,4 +10,9 @@ export const register = params => ({
   payload: params,
 });
 
+export const signUp = params => ({
+  type: userActions.SIGNUP,
+  payload: params,
+});
+
 export { inputUserNameAsync as default };

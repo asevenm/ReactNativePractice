@@ -5,6 +5,8 @@ import HomeScreen from '../screens/HomeScreen';
 import UserScreen from '../screens/UserScreen';
 import MessageScreen from '../screens/MessageScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import LoginScreen from '../screens/userScreens/Login';
+import RegisterScreen from '../screens/userScreens/Register';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -17,6 +19,10 @@ HomeStack.navigationOptions = {
 
 const UserStack = createStackNavigator({
   User: UserScreen,
+  Login: LoginScreen,
+  Register: RegisterScreen,
+}, {
+  initialRouteName: 'User',
 });
 
 UserStack.navigationOptions = {

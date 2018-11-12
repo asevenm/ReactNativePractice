@@ -7,9 +7,9 @@ import {
   TextInput,
   StyleSheet,
   Button,
+  AsyncStorage,
 } from 'react-native';
-import { inputUserNameAsync, register } from '../redux/actions/UserActions';
-import userActionTypes from '../redux/actionTypes/userActionTypes';
+import { inputUserNameAsync } from '../redux/actions/UserActions';
 
 
 const styles = StyleSheet.create({
@@ -30,8 +30,12 @@ const styles = StyleSheet.create({
 
 class UserScreen extends Component {
   static navigationOptions = {
-    title: 'User',
+    header: null,
   };
+
+  componentDidMount() {
+    this.retrieveUserInfo();
+  }
 
   handleInput = (label, value) => {
     this.setState({
@@ -39,40 +43,41 @@ class UserScreen extends Component {
     });
   }
 
-  handleRegister = () => {
-    const { onRegister } = this.props;
-    const { userName, password, email } = this.state;
-    onRegister({ userName, password, email });
+  retrieveUserInfo = async () => {
+    try {
+      const value = await AsyncStorage.getItem('USERINFO');
+      if (value) {
+        console.log(value);
+      } else {
+        console.log('no user info.');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
-    const { name, inputUserName } = this.props;
+    const { name, navigation } = this.props;
     return (
       <View>
         <Text style={styles.text}>{`I am ${name}`}</Text>
+        <TextInput
+          style={styles.textInput}
+          onChangeText={text => this.handleInput('userName', text)}
+        />
         <View>
-          <Text>userName</Text>
-          <TextInput
-            style={styles.textInput}
-            onChangeText={text => this.handleInput('userName', text)}
+          <Button
+            onPress={() => navigation.navigate('Register')}
+            title="Register"
+            style={{
+              marginBotton: 50,
+            }}
+          />
+          <Button
+            title="SignIn"
+            onPress={() => navigation.navigate('Login')}
           />
         </View>
-        <View>
-          <Text>email</Text>
-          <TextInput
-            style={styles.textInput}
-            onChangeText={text => this.handleInput('email', text)}
-          />
-        </View>
-        <View>
-          <Text>password</Text>
-          <TextInput
-            style={styles.textInput}
-            onChangeText={text => this.handleInput('password', text)}
-          />
-        </View>
-
-        <Button title="register" onPress={this.handleRegister} />
       </View>
     );
   }
@@ -89,19 +94,16 @@ const mapSateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   inputUserName: name => dispatch(inputUserNameAsync(name)),
-  onRegister: params => dispatch(register(params)),
 });
 
 UserScreen.propTypes = {
   name: propTypes.string,
-  inputUserName: propTypes.func,
-  onRegister: propTypes.func,
+  navigation: propTypes.instanceOf(Object),
 };
 
 UserScreen.defaultProps = {
   name: '',
-  inputUserName: h => h,
-  onRegister: h => h,
+  navigation: {},
 };
 
 export default connect(mapSateToProps, mapDispatchToProps)(UserScreen);
