@@ -4,7 +4,7 @@ const initState = {
 };
 
 export default function HomeReducer(state = initState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case 'GETLANGUAGELISTSUCCESS':
       return { ...state, languageList: action.languages };
     case 'GETLANGUAGELISTFAILED':

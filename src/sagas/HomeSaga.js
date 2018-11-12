@@ -1,9 +1,7 @@
-import { call, put, takeLatest, take, fork } from 'redux-saga/effects';
+import {
+  call, put, take, fork,
+} from 'redux-saga/effects';
 import requestModel from '../utils/request';
-
-export function* helloSaga() {
-  console.log('hello Sagas!')
-}
 
 export function* getLanguageList(params) {
   const { code, data } = yield call(requestModel.get, 'http://192.168.6.58:3000/languageList', params);

@@ -3,10 +3,10 @@ const initState = {
 };
 
 export default function UserReducer(state = initState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case 'INPUTUSERNAME':
       return { ...state, name: action.name };
-    default: 
+    default:
       return state;
   }
 }

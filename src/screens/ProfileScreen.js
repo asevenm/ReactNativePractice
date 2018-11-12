@@ -7,25 +7,21 @@ class ProfileScreen extends PureComponent {
     return (
       <View>
         <Text>this is Profile screen</Text>
-        <Button 
-          onPress={() => this.props.navigation.navigate('Home')} 
+        <Button
+          onPress={() => this.props.navigation.navigate('Home')}
           title="Go back Home"
         />
-      </View> 
+      </View>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = state => ({
 
-  }
-};
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
+const mapDispatchToProps = dispatch => ({
 
-  }
-};
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);

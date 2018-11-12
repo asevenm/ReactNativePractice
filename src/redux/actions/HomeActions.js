@@ -1,6 +1,6 @@
-export const fetchLanguageList = (params) => {
-  return {
-    type: 'GETLANGUAGELIST',
-    payload: params,
-  };
-};
+export const fetchLanguageList = params => ({
+  type: 'GETLANGUAGELIST',
+  payload: params,
+});
+
+export { fetchLanguageList as default };

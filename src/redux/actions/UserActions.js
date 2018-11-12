@@ -1,6 +1,6 @@
-export const inputUserNameAsync = (name) => {
-  return {
-    type: 'INPUTUSERNAMEASYNC',
-    name,
-  }
-}
+export const inputUserNameAsync = name => ({
+  type: 'INPUTUSERNAMEASYNC',
+  name,
+});
+
+export { inputUserNameAsync as default };

@@ -12,7 +12,7 @@ const HomeStack = createStackNavigator({
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
-  tabBarIcon: <Icon name="home" size={30} />
+  tabBarIcon: <Icon name="home" size={30} />,
 };
 
 const UserStack = createStackNavigator({
@@ -21,7 +21,7 @@ const UserStack = createStackNavigator({
 
 UserStack.navigationOptions = {
   tabBarLabel: 'User',
-  tabBarIcon: <Icon name="user" size={30} />
+  tabBarIcon: <Icon name="user" size={30} />,
 };
 
 const MessageStack = createStackNavigator({
@@ -30,8 +30,8 @@ const MessageStack = createStackNavigator({
 
 MessageStack.navigationOptions = {
   tabBarLabel: 'Message',
-  tabBarIcon: <Icon name="message" size={30} />
-}
+  tabBarIcon: <Icon name="medium" size={30} />,
+};
 
 const bottomStack = createBottomTabNavigator({
   HomeStack,
