@@ -6,7 +6,7 @@ import {
   Text,
   View,
   StyleSheet,
-  ListView,
+  FlatList,
   Button,
   Picker,
 } from 'react-native';
@@ -37,10 +37,6 @@ class HomeScreen extends React.Component {
     header: null,
   };
 
-  static propTypes = {
-
-  }
-
   state = {
     page: 1,
     pageSize: 10,
@@ -61,10 +57,10 @@ class HomeScreen extends React.Component {
         <ScrollView>
           <Text style={styles.welcome}>Hello, Aseven.</Text>
           <Text>{time}</Text>
-          {/* <ListView
-            dataSource={languageList}
-            renderRow={item => <Text>{item.name}</Text>}
-          /> */}
+          <FlatList
+            data={languageList}
+            renderItem={({ item }) => <Text key={item.id}>{item.name}</Text>}
+          />
           <Button
             onPress={() => navigation.navigate('Profile')}
             title="Go to profile screen"

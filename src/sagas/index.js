@@ -1,5 +1,5 @@
 import { all, fork } from 'redux-saga/effects';
-import { inputUserName } from './UserSaga';
+import { inputUserName, watchRegister } from './UserSaga';
 import { watchGetLanguageList } from './HomeSaga';
 
 export default function* rootSaga() {
@@ -7,5 +7,6 @@ export default function* rootSaga() {
     fork(watchGetLanguageList),
 
     fork(inputUserName),
+    fork(watchRegister),
   ]);
 }

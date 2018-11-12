@@ -3,6 +3,7 @@ const initState = {
 };
 
 export default function UserReducer(state = initState, action) {
+  console.log(action);
   switch (action.type) {
     case 'INPUTUSERNAME':
       return { ...state, name: action.name };
